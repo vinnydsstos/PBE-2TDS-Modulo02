@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="css/cadastro.css">
+</head>
+<body>
+    <div class="language-selector">
+        <select id="language" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="pt" selected>Português</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container">
+        <h2 id="signup-title">Cadastro</h2>
+        <input type="text" id="first-name" placeholder="Nome" required>
+        <input type="text" id="last-name" placeholder="Sobrenome" required>
+        <input type="text" id="cpf" placeholder="CPF" required>
+        <input type="tel" id="phone" placeholder="Telefone" required>
+        <input type="file" id="photo" accept="image/*" required>
+        <button onclick="submitForm()" id="signup-button">Cadastrar</button>
+    </div>
+</body>
+<script src="js/index.js"></script>
+</html>

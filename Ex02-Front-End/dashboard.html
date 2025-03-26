@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="profile-pic"></div>
+        <div class="greeting">Olá, <span id="user-name">Usuário</span></div>
+        <div class="buttons">
+            <button onclick="navigateTo('#')">Métricas</button>
+            <button onclick="navigateTo('#')">Gestores</button>
+            <button onclick="navigateTo('#')">Solicitações</button>
+            <button onclick="navigateTo('#')">Estoque</button>
+            <button onclick="navigateTo('#')">Produção</button>
+            <button onclick="window.location.href='index.html';">Sair</button>
+        </div>
+        <select class="language-select" onchange="changeLanguage(this.value)">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    <div class="main-content">
+        <h1>Bem-vindo ao Dashboard</h1>
+    </div>
+</body>
+
+<script src="js/dashboard.js"></script>
+</html>
