@@ -1,5 +1,6 @@
 package com.senai.sistema.service;
 
+import com.senai.sistema.dto.LoginDTO;
 import com.senai.sistema.dto.UsuarioDTO;
 import com.senai.sistema.entity.Usuario;
 import com.senai.sistema.repository.UsuarioRepository;
@@ -20,10 +21,14 @@ public class UsuarioService {
     }
 
     public UsuarioDTO createUser(UsuarioDTO usuarioDTO) {
+        // Converte o DTO para a entidade Usuario
         Usuario usuario = usuarioDTO.toUsuario();
-        Usuario savedUsuario = usuarioRepository.save(usuario);
-        return UsuarioDTO.fromUsuario(savedUsuario);
+        // Salva o usuário no banco de dados
+        usuario = usuarioRepository.save(usuario);
+        // Retorna o DTO com os dados do usuário, incluindo o caminho da foto
+        return UsuarioDTO.fromUsuario(usuario);
     }
+
 
     public Optional<UsuarioDTO> updateUser(Long id, UsuarioDTO usuarioDTO) {
         Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
@@ -33,7 +38,6 @@ public class UsuarioService {
             usuario.setSobrenome(usuarioDTO.getSobrenome());
             usuario.setCpf(usuarioDTO.getCpf());
             usuario.setTelefone(usuarioDTO.getTelefone());
-            usuario.setFotoPath(usuarioDTO.getFotoPath());
             Usuario updatedUsuario = usuarioRepository.save(usuario);
             return Optional.of(UsuarioDTO.fromUsuario(updatedUsuario));
         }
@@ -47,4 +51,11 @@ public class UsuarioService {
         }
         return false;
     }
+
+    public boolean authenticateUser(LoginDTO loginDTO) {
+        return usuarioRepository.findByUsername(loginDTO.getUsername())
+                .map(usuario -> usuario.getPassword().equals(loginDTO.getPassword()))
+                .orElse(false);
+    }
+
 }

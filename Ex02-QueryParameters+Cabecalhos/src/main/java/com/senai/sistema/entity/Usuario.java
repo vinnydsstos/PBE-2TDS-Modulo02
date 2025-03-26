@@ -21,6 +21,12 @@ public class Usuario implements Serializable {
     private Long id;
 
     @Column(nullable = false, length = 50)
+    private String username;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false, length = 50)
     private String nome;
 
     @Column(nullable = false, length = 50)
